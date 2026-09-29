@@ -1,0 +1,342 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+    background: #0A0A0A;
+    color:  #FFFFFF;
+    font-family: 'Inter', sans-serif;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 0;
+}
+
+.background {
+    position: fixed;
+    inset: 0;
+    background-image: url("/assets/forest.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
+main {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+}
+
+.title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.title p {
+    margin: 0;
+    font-size: 1.5rem;
+    font-family: 'Manrope', sans-serif;
+}
+
+#setting {
+    flex: 0 0 32px;
+    fill: #FFFFFF;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+#setting:hover {
+    fill: #A1A1A1;
+}
+
+main .timer-card{
+    min-height: 100vh;
+    padding-top: clamp(24px, 10vh, 80px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+#timer-display {
+    font-size: 7rem;
+}
+
+button {
+    padding: 11px 20px;
+    border: 1px solid #404040;
+    border-radius: 8px;
+    background: #141414b7;
+    color: #ffffff;
+    font-family: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+button:hover {
+    background: #1f1f1fb7;
+    border-color: #666666;
+}
+
+.setting-card {
+    width: 90%;
+    max-width: 500px;
+    height: 500px;
+    padding: 28px;
+    box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #141414f8;
+    border: 1px solid #292929;
+    border-radius: 24px;
+    color: #fff;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+}
+
+.settings-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 30px;
+}
+
+.settings-header h2 {
+    margin: 0;
+    font-size: 22px;
+}
+
+.settings-header p {
+    margin: 6px 0 0;
+    color: #777;
+    font-size: 13px;
+}
+
+.close-settings {
+    border: none;
+    background: none;
+    color: #777;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.close-settings:hover {
+    color: white;
+}
+
+
+.settings-section {
+    margin-bottom: 28px;
+}
+
+.section-title {
+    margin: 0 0 14px;
+    color: #777;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.timer-inputs {
+    display: flex;
+    gap: 10px;
+}
+
+.timer-inputs label {
+    flex: 1;
+}
+
+.timer-inputs span {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 13px;
+}
+
+.timer-inputs input {
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 10px;
+    border: 1px solid #292929;
+    border-radius: 10px;
+
+    background: #1b1b1b;
+    color: white;
+    outline: none;
+}
+
+.timer-inputs input:focus {
+    border-color: #555;
+}
+
+.timer-inputs small {
+    display: block;
+    margin-top: 5px;
+    color: #666;
+    font-size: 11px;
+}
+
+.setting-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 14px 0;
+    border-bottom: 1px solid #222;
+
+    cursor: pointer;
+}
+
+.setting-row span {
+    display: block;
+    font-size: 14px;
+}
+
+.setting-row small {
+    display: block;
+    margin-top: 4px;
+    color: #666;
+    font-size: 11px;
+}
+
+.save-settings {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background: #fff;
+    color: #111;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.save-settings:hover {
+    background: #ddd;
+}
+
+.timer-inputs input[type="number"] {
+    width: 100%;
+    height: 42px;
+    box-sizing: border-box;
+    padding: 0 12px;
+    background: #1b1b1b;
+    border: 1px solid #292929;
+    border-radius: 10px;
+    color: white;
+    font-size: 15px;
+    outline: none;
+}
+
+
+.timer-inputs input[type="number"]::-webkit-inner-spin-button,
+.timer-inputs input[type="number"]::-webkit-outer-spin-button {
+    opacity: 0;
+}
+
+.timer-inputs input[type="number"]:focus {
+    border-color: #555;
+}
+
+.setting-row input[type="checkbox"] {
+    appearance: none;
+    width: 42px;
+    height: 24px;
+    background: #292929;
+    border-radius: 20px;
+    position: relative;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.setting-row input[type="checkbox"]::after {
+    content: "";
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    top: 3px;
+    left: 3px;
+    background: #888;
+    border-radius: 50%;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.setting-row input[type="checkbox"]:checked {
+    background: #fff;
+}
+
+.setting-row input[type="checkbox"]:checked::after {
+    transform: translateX(18px);
+    background: #111;
+}
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(2px);
+}
+
+#picture-in-picture {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+}
+
+@media screen and (max-width: 600px) {
+    #picture-in-picture {
+    display: none;
+}}
+
+.session-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin: 10px 0 18px;
+}
+
+.session-dots span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: currentColor;
+    opacity: 0.5;
+}
+
+.session-dots span.completed {
+    opacity: 1;
+}
