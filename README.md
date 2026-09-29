@@ -1,11 +1,11 @@
-# Blobdoro
+# <img src="assets/blobdoro.png" width="32" alt="Description"> Blobdoro
 
 ![img](https://i.postimg.cc/L6PkJwPm/blobdoro-website-img.png)
 
 Blobdoro is a browser-based Pomodoro timer for alternating focused work sessions with short and long breaks. It includes lo-fi music and a compact picture-in-picture timer on supported browsers.
 
 ## Try it online
-Use it directly in your browser: 
+Use it directly in your browser: https://blobdoro.netlify.app/
 
 ## Features
 
