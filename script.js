@@ -167,7 +167,7 @@ function updateDisplay() {
         currentSessionLabel = 'Long Break';
     }
     
-    document.title = `${formattedTime} - ${currentSessionLabel}`;
+    document.title = `${formattedTime} - ${currentSessionLabel} | Blobdoro`;
     
     timerDisplay.textContent = formattedTime;
     
