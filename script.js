@@ -79,6 +79,8 @@ function pauseTimer() {
 function resetTimer() {
     pauseTimer();
 
+    document.title = 'Blobdoro';
+
     if (isWork) {
         currentTime = workTime * 60;
         updateDisplay();
@@ -158,13 +160,22 @@ function updateDisplay() {
     const formattedSeconds = String(remainingSeconds).padStart(2, '0');
     const formattedTime = `${formattedMinutes}:${formattedSeconds}`;
 
+    let currentSessionLabel = 'Break';
+    if (isWork) {
+        currentSessionLabel = 'Focus';
+    } else if (sessionCount % 4 === 0) {
+        currentSessionLabel = 'Long Break';
+    }
+    
+    document.title = `${formattedTime} - ${currentSessionLabel}`;
+    
     timerDisplay.textContent = formattedTime;
-
+    
     if (pictureInPictureTimer) {
         let currentSessionLabel = 'Break Session';
 
         if (isWork) {
-            currentSessionLabel = 'Work Session';
+            currentSessionLabel = 'Focus Session';
         } else if (sessionCount % 4 === 0) {
             currentSessionLabel = 'Long Break Session';
         }
@@ -350,6 +361,18 @@ function discardSettings() {
 }
 
 
+document.addEventListener('visibilitychange', () => {
+    if (isRunning && endTime) {
+        currentTime = Math.max(0, Math.ceil((endTime - Date.now()) / 1000));
+        updateDisplay();
+        if (currentTime <= 0) {
+            clearInterval(timer);
+            sessionComplete();
+        }
+    }
+});
+
+
 start.addEventListener('click', () => {
     runTimer()
 
@@ -449,4 +472,12 @@ pictureInPictureButton.addEventListener('click', async () => {
         pictureInPictureSession = null;
         pictureInPictureDots = null;
     }, { once: true });
+});
+
+
+window.addEventListener('beforeunload', (event) => {
+    if (isRunning) {
+        event.preventDefault();
+        event.returnValue = '';
+    }
 });
