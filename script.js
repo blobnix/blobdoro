@@ -34,6 +34,7 @@ let workTime = 25;
 let breakTime = 5;
 let longbreakTime = 15;
 let currentTime = workTime * 60;
+let endTime = null;
 let isRunning = false;
 let isWork = true;
 let sessionCount = 0;
@@ -46,14 +47,15 @@ let pictureInPictureDots = null;
 function runTimer() {
     if (!isRunning) {
         isRunning = true;
+        endTime = Date.now() + currentTime * 1000;
         timer = setInterval( () => {
-            currentTime--;
+            currentTime = Math.max(0, Math.ceil((endTime - Date.now()) / 1000));
             updateDisplay();
             if (currentTime <= 0) {
                 clearInterval(timer);
                 sessionComplete();
             }
-        }, 1000)
+        }, 250)
     }
     start.style.display = 'none';
     pause.style.display = '';
@@ -63,7 +65,11 @@ function runTimer() {
 
 function pauseTimer() {
     clearInterval(timer);
+    if (isRunning && endTime) {
+        currentTime = Math.max(0, Math.ceil((endTime - Date.now()) / 1000));
+    }
     isRunning = false;
+    endTime = null;
     pause.style.display = 'none';
     start.style.display = '';
     backgroundMusic.pause();
